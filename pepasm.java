@@ -17,17 +17,17 @@ public class pepasm {
         List<String> operandlessInstructions = Arrays.asList("STOP", "ASLA", "ASRA"); //The only instructions without operands
     
         if (args.length == 0) {
-            IO.println("No argument given");
+            System.out.println("No argument given");
             return;
         }
     
         if (args.length > 1) {
-            IO.println("Too many arguments given");
+            System.out.println("Too many arguments given");
             return;
         }
     
         if (!args[0].matches(".+\\.pep")) {
-            IO.println("Invalid argument format (not 'x.pep')");
+            System.out.println("Invalid argument format (not 'x.pep')");
             return;
         }
     
@@ -36,7 +36,7 @@ public class pepasm {
             FileReader reader = new FileReader(args[0]);
             scanner = new Scanner(reader);
         } catch (FileNotFoundException e) {
-            IO.println("File not found");
+            System.out.println("File not found");
             return;
         }
     
@@ -74,13 +74,13 @@ public class pepasm {
                 if (operand.endsWith(",")) {
                     operand = operand.replace(",", ""); //Removes trailing comma
                 } else {
-                    IO.println("Invalid operand");
+                    System.out.println("Invalid operand");
                     return;
                 }
     
                 if (instruction.equals("BRNE")) { //Checks if the instruction is BRNE
                     if (lineSegments[2].equals("d")) { //Checks if the addressing mode is direct, and if so gives an error message
-                        IO.println("Invalid addressing mode for BRNE instruction");
+                        System.out.println("Invalid addressing mode for BRNE instruction");
                         return;
                     }
     
@@ -92,7 +92,7 @@ public class pepasm {
                     if (operand.startsWith("0x")) { //Checks if operand starts with '0x'
                         operand = operand.replace("0x", ""); //Removes '0x'
                     } else {
-                        IO.println("Invalid operand");
+                        System.out.println("Invalid operand");
                         return;
                     }
     
@@ -105,7 +105,7 @@ public class pepasm {
             currentAddress += 3; //Increments the current address by 3
         }
     
-        IO.println(machineCode);
+        System.out.println(machineCode);
     }
     
     private static HashMap<String, String> getInstructionMap() {
