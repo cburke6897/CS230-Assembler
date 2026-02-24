@@ -1,4 +1,11 @@
-public class Pepasm {
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+
+public class pepasm {
     public static void main(String[] args) {
         StringBuilder machineCode = new StringBuilder(); //Where converted machine code will be built
     
